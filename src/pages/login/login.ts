@@ -3,6 +3,7 @@ import { Platform, NavController, MenuController, AlertController, LoadingContro
 import { Facebook } from 'ionic-native';
 import { HomePage } from '../home/home';
 import { UserData } from '../../providers/user-data';
+import { JourneyListPage } from '../journey-list/journey-list';
 
 /*
   Generated class for the Login page.
@@ -22,7 +23,7 @@ export class LoginPage {
   constructor(public nav: NavController, public platform: Platform,
     public menu: MenuController, public dataService: UserData, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
     console.log(' Constructor Login Page');
-    this.enableFacebook = true;
+    this.enableFacebook = false;
     this.loading = this.loadingCtrl.create({
       content: 'Authenticating...'
     });
@@ -64,7 +65,7 @@ export class LoginPage {
         picture: ''
       };
 
-      //this.nav.setRoot(HomePage);
+      this.nav.setRoot(JourneyListPage);
       this.dataService.saveUserProfile(user_profile);
       this.loading.dismiss();
     }
