@@ -15,14 +15,14 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
+  // load
   loading: any;
   enableFacebook: boolean;
 
   constructor(public nav: NavController, public platform: Platform,
     public menu: MenuController, public dataService: UserData, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
     console.log(' Constructor Login Page');
-    this.enableFacebook = false;
+    this.enableFacebook = true;
     this.loading = this.loadingCtrl.create({
       content: 'Authenticating...'
     });
@@ -83,7 +83,7 @@ export class LoginPage {
 
   getProfile(): void {
     //this.debug('facebook api in progress')
-    Facebook.api('/me?fields=id,name,picture', ['public_profile']).then(
+    Facebook.api('/me?fields=id,name,picture,email,first_name,last_name,age_range,gender', ['public_profile']).then(
       (response) => {
         //this.debug('facebook api response')
         //console.log(response);
